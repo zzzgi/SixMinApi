@@ -11,11 +11,10 @@ namespace SixMinApi.Models
         public string? HowTo { get; set; }
 
         [Required]
-        [MaxLength(5)]
+        [MaxLength(6)]
         public string? Platform { get; set; }
 
         [Required]
         public string? CommandLine { get; set; }
-
     }
 }

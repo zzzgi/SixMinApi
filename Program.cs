@@ -1,4 +1,3 @@
-using System.Collections.Immutable;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using SixMinApi.Data;
@@ -10,17 +9,17 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-//Building sql connection
+// //Building sql connection
 var sqlConBuilder = new SqlConnectionStringBuilder();
 
+
 sqlConBuilder.ConnectionString = builder.Configuration.GetConnectionString("SQLDbConnection");
-sqlConBuilder.UserID = builder.Configuration["UserId"];
+sqlConBuilder.UserID = builder.Configuration["UserID"];
 sqlConBuilder.Password = builder.Configuration["Password"];
 
 builder.Services.AddDbContext<AppDbContext>(opt => opt.UseSqlServer(sqlConBuilder.ConnectionString));
 
 var app = builder.Build();
-
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
