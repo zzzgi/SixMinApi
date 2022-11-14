@@ -11,7 +11,7 @@ using SixMinApi.Data;
 namespace SixMinApi.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20221114113508_initialmigration")]
+    [Migration("20221114125801_initialmigration")]
     partial class initialmigration
     {
         /// <inheritdoc />
@@ -24,7 +24,7 @@ namespace SixMinApi.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("Microsoft.EntityFrameworkCore.DbLoggerCategory+Database+Command", b =>
+            modelBuilder.Entity("SixMinApi.Models.Command", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -33,13 +33,17 @@ namespace SixMinApi.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("CommandLine")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("HowTo")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Platform")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(6)
+                        .HasColumnType("nvarchar(6)");
 
                     b.HasKey("Id");
 

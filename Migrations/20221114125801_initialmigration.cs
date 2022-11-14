@@ -16,9 +16,9 @@ namespace SixMinApi.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    CommandLine = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    HowTo = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Platform = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    HowTo = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Platform = table.Column<string>(type: "nvarchar(6)", maxLength: 6, nullable: false),
+                    CommandLine = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
