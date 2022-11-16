@@ -18,6 +18,7 @@ sqlConBuilder.UserID = builder.Configuration["UserID"];
 sqlConBuilder.Password = builder.Configuration["Password"];
 
 builder.Services.AddDbContext<AppDbContext>(opt => opt.UseSqlServer(sqlConBuilder.ConnectionString));
+builder.Services.AddScoped<ICommandRepo, CommandRepo>();
 
 var app = builder.Build();
 

@@ -7,19 +7,29 @@ namespace SixMinApi.Data
     {
         private readonly AppDbContext _context;
 
-        public CommandRepo(AppDbContext context)
+        public CommandRepo(AppDbContext context) // able to use due to dependency injection. 
         {
             _context = context;
         }
 
         public async Task CreateCommand(Command cmd)
         {
-            throw new NotImplementedException();
+            if (cmd == null)
+            {
+                throw new ArgumentNullException(nameof(cmd));
+            }
+
+            await _context.AddAsync(cmd);
         }
 
-        public async void DeleteCommand(Command cmd)
+        public void DeleteCommand(Command cmd)
         {
-            throw new NotImplementedException();
+            if (cmd == null)
+            {
+                throw new ArgumentNullException(nameof(cmd));
+            }
+
+            _context.Commands.Remove(cmd);
         }
 
         public async Task<IEnumerable<Command>> GetAllCommands()
