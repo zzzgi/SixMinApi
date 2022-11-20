@@ -1,1 +1,1 @@
-# SixMinApi
+# Simple mock project REST Api with MV pattern to let the user add, update and delete the items from the database. Did not use any controller to keep it simple. The Project implements the docker Sql database for the ease of deployment.
